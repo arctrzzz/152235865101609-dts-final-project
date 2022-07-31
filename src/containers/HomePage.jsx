@@ -19,6 +19,7 @@ const HomePage = () => {
                     title={item.title}
                     image={item.thumb}
                     key={item.key}
+                    keyword={item.key}
                   />
                 </Box>
               );
@@ -32,7 +33,11 @@ const HomePage = () => {
           pilihan menu baru{" "}
         </Typography>
         <Box
-          sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
         >
           {list.map((item) => {
             return (
@@ -41,6 +46,7 @@ const HomePage = () => {
                   title={item.title}
                   image={item.thumb}
                   key={item.key}
+                  keyword={item.key}
                 />
               </Box>
             );

@@ -5,13 +5,19 @@ import RecipeInggredients from "../components/RecipeInggredients";
 import RecipeStep from "../components/RecipeStep";
 import detailRecipe from "../data/detailRecipe.json";
 import { Box, Typography } from "@mui/material";
-import { borderRadius } from "@mui/system";
+
+import { useSelector, useDispatch } from "react-redux";
+import { selectMenu, selectTitle } from "../features/recipe/sliceRecipe";
+
 const DetailPage = () => {
   const image = detailRecipe.results.thumb;
   const description = detailRecipe.results.desc;
   const inggredients = detailRecipe.results.ingredient;
   const step = detailRecipe.results.step;
   const item = detailRecipe.results.needItem;
+
+  const menustate = useSelector(selectMenu);
+  const titlestate = useSelector(selectTitle);
   return (
     <div>
       <Box
@@ -25,6 +31,8 @@ const DetailPage = () => {
 
         <Typography variant="h4" sx={{ margin: "1em" }}>
           {detailRecipe.results.title}
+          {menustate.payload}
+          {titlestate.payload}
         </Typography>
         <br></br>
         <RecipeDescription description={description} />
