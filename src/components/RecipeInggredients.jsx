@@ -4,10 +4,10 @@ import { Box, Typography } from "@mui/material";
 const RecipeInggredients = (props) => {
   return (
     <>
-      {props.inggredients.map((item) => {
+      {props.extendedIngredients.map((item) => {
         return (
-          <Box>
-            <Typography variant="body2">{item}</Typography>
+          <Box key={item.id}>
+            <Typography variant="body2">{item.original}</Typography>
           </Box>
         );
       })}

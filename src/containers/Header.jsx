@@ -1,15 +1,22 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 import { Outlet } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <Typography variant="h1" sx={{ color: "#605f5e" }}>
-        Final Project
-      </Typography>
-      <NavBar />
-      <Outlet />
+      <Container
+        sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}
+      >
+        <Typography variant="h2" sx={{ color: "#605f5e" }}>
+          RecipePedia
+        </Typography>
+        <Typography variant="caption" sx={{ color: "#605f5e" }}>
+          tired burning your kitchen? try this site recipe!
+        </Typography>
+        <NavBar />
+        <Outlet />
+      </Container>
     </>
   );
 };

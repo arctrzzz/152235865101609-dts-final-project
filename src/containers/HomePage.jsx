@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-import listRecipe from "../data/listRecipe.json";
-import { Card, Typography, Box, Container } from "@mui/material";
+import { Typography, Box, Container } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import ThumbnailRecipeCard from "../components/ThumbnailRecipeCard";
 
 const HomePage = () => {
-  const list = listRecipe.results;
+  const [listRecipe, setListRecipe] = useState([
+    { id: "test", title: "test", image: "test", imageType: "test" },
+  ]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.spoonacular.com/recipes/complexSearch?number=10&apiKey=11ecbfcc9de34a729a9bd94fd062d1a9"
+        );
+        setListRecipe(response.data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Container>
         <div>
           <Carousel>
-            {list.map((item) => {
+            {listRecipe.map((item) => {
               return (
-                <Box>
+                <Box key={item.id}>
                   <ThumbnailRecipeCard
                     title={item.title}
-                    image={item.thumb}
-                    key={item.key}
-                    keyword={item.key}
+                    image={item.image}
+                    key={item.id}
+                    id={item.id}
                   />
                 </Box>
               );
@@ -39,14 +56,17 @@ const HomePage = () => {
             justifyContent: "center",
           }}
         >
-          {list.map((item) => {
+          {listRecipe.map((item) => {
             return (
-              <Box sx={{ width: "180px", margin: "1em", borderRadius: "2em" }}>
+              <Box
+                key={item.id}
+                sx={{ width: "180px", margin: "1em", borderRadius: "2em" }}
+              >
                 <ThumbnailRecipeCard
                   title={item.title}
-                  image={item.thumb}
-                  key={item.key}
-                  keyword={item.key}
+                  image={item.image}
+                  key={item.id}
+                  id={item.id}
                 />
               </Box>
             );

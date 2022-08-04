@@ -1,14 +1,14 @@
 import React from "react";
 import { Container } from "@mui/material";
 import LoginRegisterCard from "../components/LoginRegisterCard";
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div>
       <Container>
-        <LoginRegisterCard status="login" />
+        <LoginRegisterCard status="register" />
       </Container>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

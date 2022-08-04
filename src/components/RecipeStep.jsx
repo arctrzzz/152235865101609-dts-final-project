@@ -4,10 +4,12 @@ import { Box, Typography } from "@mui/material";
 const RecipeStep = (props) => {
   return (
     <>
-      {props.step.map((step) => {
+      {props.detailstep.map((step) => {
         return (
-          <Box>
-            <Typography variant="body2">{step}</Typography>
+          <Box key={step.id}>
+            <Typography variant="body2">{step.number}</Typography>
+
+            <Typography variant="body1">{step.step}</Typography>
           </Box>
         );
       })}
