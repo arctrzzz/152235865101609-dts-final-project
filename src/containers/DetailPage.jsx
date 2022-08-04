@@ -616,12 +616,6 @@ const DetailPage = () => {
         <Typography variant="h3"></Typography>
         <RecipeStep detailstep={detailstep[0].steps} />
         <br></br>
-        {/* <RecipeDescription description={description} />
-        <Typography variant="h5">Bahan-Bahan</Typography>
-        <RecipeInggredients inggredients={inggredients} />
-
-        <Typography variant="h5">Langkah:</Typography>
-        <RecipeStep step={step} /> */}
       </Box>
     </div>
   );

@@ -13,6 +13,7 @@ function App() {
       <Container sx={{ backgroundColor: "#C2C2C2" }}>
         <Routes>
           <Route path="/" element={<Header />}>
+            <Route path="" element={<HomePage />}></Route>
             <Route path="Homepage" element={<HomePage />}></Route>
             <Route path="Detailpage" element={<DetailPage />}></Route>
             <Route path="login" element={<LoginPage />}></Route>
