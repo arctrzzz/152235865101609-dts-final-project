@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Header from "./containers/Header";
 import Footer from "./containers/Footer";
 import HomePage from "./containers/HomePage";
@@ -5,9 +6,22 @@ import DetailPage from "./containers/DetailPage";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import { Container } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
-
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { auth } from "./authentication/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 function App() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    if (!user) {
+      navigate("/login");
+    }
+  });
+
   return (
     <div className="App">
       <Container sx={{ backgroundColor: "#ECB390" }}>
