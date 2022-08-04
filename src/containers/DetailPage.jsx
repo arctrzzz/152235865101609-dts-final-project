@@ -6,15 +6,9 @@ import { Box, Typography } from "@mui/material";
 import axios from "axios";
 
 import { useSelector } from "react-redux";
-import {
-  selectAll,
-  selectTitle,
-  selectId,
-} from "../features/recipe/sliceRecipe";
+import { selectId } from "../features/recipe/sliceRecipe";
 
 const DetailPage = () => {
-  const allDetail = useSelector(selectAll);
-  const titleRecipe = useSelector(selectTitle);
   const idRecipe = useSelector(selectId);
 
   const [detailMenu, setDetailMenu] = useState({
@@ -585,7 +579,7 @@ const DetailPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.gect(
           `https://api.spoonacular.com/recipes/${idRecipe}/information?includeNutrition=false&apiKey=11ecbfcc9de34a729a9bd94fd062d1a9`
         );
         setDetailMenu(response.data);
@@ -594,7 +588,7 @@ const DetailPage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [idRecipe]);
 
   const imageDetail = detailMenu.image;
   const instructions = detailMenu.instructions;
