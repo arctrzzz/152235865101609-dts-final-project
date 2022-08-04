@@ -10,7 +10,13 @@ const HomePage = () => {
   const [finalSearchText, setFinalSearchText] = useState("");
 
   const [listRecipe, setListRecipe] = useState([
-    { id: "test", title: "test", image: "test", imageType: "test" },
+    {
+      id: "test",
+      title:
+        "sorry, if you see this, my API hit their limit. come back tomorrow",
+      image: "test",
+      imageType: "test",
+    },
   ]);
 
   const textFieldHandler = (event) => {
