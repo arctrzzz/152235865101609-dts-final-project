@@ -6,8 +6,8 @@ const RecipeInggredients = (props) => {
     <>
       {props.extendedIngredients.map((item) => {
         return (
-          <Box key={item.id}>
-            <Typography variant="body2">{item.original}</Typography>
+          <Box key={item.id} sx={{ margin: "0em 0em 0em 02em" }}>
+            <Typography variant="body1">- {item.original}</Typography>
           </Box>
         );
       })}

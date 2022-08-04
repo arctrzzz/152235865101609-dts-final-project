@@ -45,6 +45,7 @@ const HomePage = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
+              margin: "2em",
             }}
           >
             {" "}
@@ -53,12 +54,15 @@ const HomePage = () => {
               onChange={textFieldHandler}
               label="search recipe"
               placeholder="type your desired recipe"
-              sx={{ width: "15em" }}
+              sx={{
+                width: "15em",
+                backgroundColor: "#ffffff",
+              }}
             ></TextField>
             <Button
               onClick={buttonOnSearchHandler}
               variant="contained"
-              sx={{ width: "15em" }}
+              sx={{ width: "15em", backgroundColor: "" }}
             >
               search
             </Button>
@@ -66,10 +70,15 @@ const HomePage = () => {
         </div>
         <div></div>
         <Typography
-          variant="h4"
-          sx={{ display: "flex", justifyContent: "center", marginTop: "1em" }}
+          variant="h3"
+          sx={{
+            color: "#FFFFFF",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "1em",
+          }}
         >
-          try this recipe !{" "}
+          Hey...C'mon try this recipe !{" "}
         </Typography>
         <Box
           sx={{

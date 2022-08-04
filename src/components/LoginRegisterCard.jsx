@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Typography, TextField, Button } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmail,
@@ -69,7 +69,7 @@ const LoginRegisterCard = ({ status }) => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h4">
+      <Typography variant="h4" sx={{ margin: "1em", color: "#DD4A48" }}>
         {status === "login" ? "Login" : "Register"}
       </Typography>
       <Card
@@ -96,11 +96,26 @@ const LoginRegisterCard = ({ status }) => {
       >
         {status === "login" ? "Login" : "Register"}
       </Button>
-      <Typography variant="body1">belum memiliki akun?</Typography>
 
-      <Button variant="text" sx={{ margin: "0.5em" }}>
-        Register
-      </Button>
+      {status === "login" ? (
+        <>
+          <Typography variant="body1">belum memiliki akun?</Typography>
+          <Link to="/register">
+            <Button variant="text" sx={{ margin: "0.5em" }}>
+              Register
+            </Button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Typography variant="body1">sudah memiliki akun?</Typography>
+          <Link to="/login">
+            <Button variant="text" sx={{ margin: "0.5em" }}>
+              Login
+            </Button>{" "}
+          </Link>
+        </>
+      )}
     </Container>
   );
 };

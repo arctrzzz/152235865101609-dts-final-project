@@ -6,8 +6,10 @@ const RecipeStep = (props) => {
     <>
       {props.detailstep.map((step) => {
         return (
-          <Box key={step.id}>
-            <Typography variant="body2">{step.number}</Typography>
+          <Box key={step.id} sx={{ display: "flex", margin: "0.5em" }}>
+            <Typography variant="body1" sx={{ margin: " 0em 2em 0em 0em" }}>
+              {step.number}
+            </Typography>
 
             <Typography variant="body1">{step.step}</Typography>
           </Box>

@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Container sx={{ backgroundColor: "#C2C2C2" }}>
+      <Container sx={{ backgroundColor: "#ECB390" }}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="" element={<HomePage />}></Route>

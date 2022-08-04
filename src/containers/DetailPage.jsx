@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RecipeImage from "../components/RecipeImage";
 import RecipeInggredients from "../components/RecipeInggredients";
 import RecipeStep from "../components/RecipeStep";
-import { Box, Typography } from "@mui/material";
+import { Card, Box, Typography } from "@mui/material";
 import axios from "axios";
 
 import { useSelector } from "react-redux";
@@ -591,10 +591,10 @@ const DetailPage = () => {
   }, [idRecipe]);
 
   const imageDetail = detailMenu.image;
-  const instructions = detailMenu.instructions;
+  // const instructions = detailMenu.instructions;
   const extendedIngredients = detailMenu.extendedIngredients;
   const detailstep = detailMenu.analyzedInstructions;
-  const summary = detailMenu.summary;
+  // const summary = detailMenu.summary;
   return (
     <div>
       <Box
@@ -605,16 +605,24 @@ const DetailPage = () => {
         }}
       >
         <RecipeImage image={imageDetail} />
-        <Typography variant="h5" sx={{ margin: "1em" }}>
+        {/* <Typography variant="h5" sx={{ margin: "1em" }}>
           {summary}
         </Typography>
         <Typography variant="h4" sx={{ margin: "1em" }}>
           {instructions}
-        </Typography>
-        <Typography variant="h3">Ingredients</Typography>
-        <RecipeInggredients extendedIngredients={extendedIngredients} />
-        <Typography variant="h3"></Typography>
-        <RecipeStep detailstep={detailstep[0].steps} />
+        </Typography> */}
+        <Card variant="outlined">
+          <Typography variant="h3" sx={{ color: "#DD4A48" }}>
+            Ingredients:
+          </Typography>
+          <RecipeInggredients extendedIngredients={extendedIngredients} />
+        </Card>
+        <Card variant="outlined">
+          <Typography variant="h3" sx={{ color: "#DD4A48" }}>
+            Steps:
+          </Typography>
+          <RecipeStep detailstep={detailstep[0].steps} />
+        </Card>
         <br></br>
       </Box>
     </div>
