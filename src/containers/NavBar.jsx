@@ -38,11 +38,11 @@ const NavBar = () => {
                 Login
               </LinkMui>
             </Link>
-            <Link to="/register">
+            {/* <Link to="/register">
               <LinkMui underline="hover" sx={{ color: "#DD4A48" }}>
                 Register
               </LinkMui>
-            </Link>
+            </Link> */}
           </Box>
           <Button size="small" onClick={logOutButtonHandler}>
             Logout

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Typography, TextField, Button } from "@mui/material";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmail,
@@ -10,16 +10,17 @@ import {
 
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const LoginRegisterCard = ({ status }) => {
+const LoginRegisterCard = () => {
   const navigate = useNavigate();
 
-  // error: bila ada error yang diberikan
   const [user, isLoading] = useAuthState(auth);
 
   const [credential, setCredential] = useState({
     email: "",
     password: "",
   });
+
+  const [status, setStatus] = useState("login");
 
   const textFieldEmailOnChangeHandler = (event) => {
     setCredential({
@@ -51,6 +52,14 @@ const LoginRegisterCard = ({ status }) => {
     }
   };
 
+  const togleStatusOnClick = () => {
+    if (status === "login") {
+      setStatus("register");
+    } else {
+      setStatus("login");
+    }
+  };
+
   useEffect(() => {
     if (isLoading) {
       return;
@@ -72,10 +81,7 @@ const LoginRegisterCard = ({ status }) => {
       <Typography variant="h4" sx={{ margin: "1em", color: "#DD4A48" }}>
         {status === "login" ? "Login" : "Register"}
       </Typography>
-      <Card
-        variant="outlined"
-        // sx={{ width: "30em", height: '30em"' }}
-      >
+      <Card variant="outlined">
         <TextField
           placeholder="e-mail"
           value={credential.email}
@@ -99,21 +105,53 @@ const LoginRegisterCard = ({ status }) => {
 
       {status === "login" ? (
         <>
-          <Typography variant="body1">belum memiliki akun?</Typography>
-          <Link to="/register">
-            <Button variant="text" sx={{ margin: "0.5em" }}>
-              Register
-            </Button>
-          </Link>
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <div>
+              <Typography variant="body1">belum memiliki akun?</Typography>
+
+              <Button
+                variant="text"
+                sx={{
+                  margin: "0.5em",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                onClick={togleStatusOnClick}
+              >
+                Register
+              </Button>
+            </div>
+          </Container>
         </>
       ) : (
         <>
-          <Typography variant="body1">sudah memiliki akun?</Typography>
-          <Link to="/login">
-            <Button variant="text" sx={{ margin: "0.5em" }}>
-              Login
-            </Button>{" "}
-          </Link>
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              justifyItems: "stretch",
+            }}
+          >
+            <div>
+              <Typography variant="body1">sudah memiliki akun?</Typography>
+              <Button
+                variant="text"
+                sx={{
+                  margin: "0.5em",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                onClick={togleStatusOnClick}
+              >
+                Login
+              </Button>{" "}
+            </div>
+          </Container>
         </>
       )}
     </Container>
